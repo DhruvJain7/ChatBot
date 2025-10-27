@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 // Assuming PromptBox is in a separate file, e.g., ./PromptBox
 import PromptBox from "./PromptBox";
-import botAvatar from "../public/bot.png"; // Adjust the path to your image
+import botAvatar from "/src/bot.png"; // Adjust the path to your image
 
 const Body = () => {
   // State to hold the entire conversation history
