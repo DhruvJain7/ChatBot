@@ -1,9 +1,19 @@
 import React from "react";
 import PromptBox from "./PromptBox";
 import botAvatar from "/src/bot.png";
+import ReactMarkdown from "react-markdown";
 
 // Body is now a "presentational" component. It just displays the data it's given.
-const Body = ({ chatMessages, isLoading, handlePromptSubmit }) => {
+const Body = ({
+  chatMessages,
+  isLoading,
+  handlePromptSubmit,
+  isListening,
+  onToggleListening,
+  isSpeechSupported,
+  isVoiceModeOn,
+  onToggleVoiceMode,
+}) => {
   return (
     <div className="flex flex-col h-full bg-gray-50">
       {/* Scrollable content area */}
@@ -36,7 +46,9 @@ const Body = ({ chatMessages, isLoading, handlePromptSubmit }) => {
                       : "bg-white text-gray-800 border border-gray-200"
                   }`}
                 >
-                  <p className="whitespace-pre-wrap">{message.text}</p>
+                  <div className="prose">
+                    <ReactMarkdown>{message.text}</ReactMarkdown>
+                  </div>
                 </div>
               </div>
             ))}
@@ -64,6 +76,11 @@ const Body = ({ chatMessages, isLoading, handlePromptSubmit }) => {
           <PromptBox
             onPromptSubmit={handlePromptSubmit}
             isLoading={isLoading}
+            isListening={isListening}
+            onToggleListening={onToggleListening}
+            isSpeechSupported={isSpeechSupported}
+            isVoiceModeOn={isVoiceModeOn}
+            onToggleVoiceMode={onToggleVoiceMode}
           />
         </div>
       </div>
