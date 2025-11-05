@@ -11,6 +11,7 @@ This project implements a client-server architecture to create an advanced chatb
 - The **Flask backend** now uses **Google's `gemma-2b-it`**, a powerful instruction-following model, to generate intelligent and accurate responses.
 - **Persistent Memory:** The backend uses **SQLite** to save all conversation history. This means the chatbot remembers your conversation even after the server is restarted.
 - **Reset Functionality:** A `/reset` endpoint is available to clear the chat history for a specific user, allowing them to start a new conversation.
+- **Voice Interactivity:** Uses Speech API to have a Voice mode functionality.The bot speaks every messages from the model when in Voice mode.
 
 This is a significant upgrade from the original project, moving from a simple conversational model (DialoGPT) to a truly capable AI assistant.
 
