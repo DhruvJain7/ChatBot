@@ -109,7 +109,7 @@ const PromptBox = ({
           type="button"
           onClick={onToggleListening}
           disabled={isLoading}
-          clasName={`p-3 rounded-full transition-colors ${isListening ? "bg-red-500 text-white animate-pulse" : "bg-gray-200 text-gray-600 hover:bg-gray-300"}disabled:opacity-50 disabled:cursor-not-allowed`}
+          className={`p-3 rounded-full transition-colors ${isListening ? "bg-red-500 text-white animate-pulse" : "bg-gray-200 text-gray-600 hover:bg-gray-300"}disabled:opacity-50 disabled:cursor-not-allowed`}
           aria-label={isListening ? "Stop Listening" : "Start Listening"}
         >
           <MicrophoneIcon />

@@ -6,20 +6,25 @@ import sqlite3
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from groq import Groq  # Much lighter than transformers/torch
+from groq import Groq
 
 # 1. Setup & Environment
 load_dotenv()
 app = Flask(__name__)
+
+# This allows your local frontend (localhost) and Vercel to talk to this API
 CORS(app, resources={r"/*": {"origins": "*"}})
 logging.basicConfig(level=logging.DEBUG)
 
-# Initialize Groq (Set GROQ_API_KEY in your Render environment)
+# Initialize Groq (Set GROQ_API_KEY in your Render environment variables)
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-DB_NAME = "chat_history.db"
+
+# FIX: Use absolute path for DB to avoid permission issues on Render
+basedir = os.path.abspath(os.path.dirname(__file__))
+DB_NAME = os.path.join(basedir, "chat_history.db")
 
 
-# 2. Database Helper Functions (Preserved from your code)
+# 2. Database Helper Functions
 def init_db():
     with sqlite3.connect(DB_NAME) as conn:
         cursor = conn.cursor()
@@ -54,7 +59,7 @@ def load_history(user_id):
         return []
 
 
-# 3. Chat Endpoint (Refactored for API)
+# 3. Chat Endpoint
 @app.route("/chat", methods=["POST"])
 def chat():
     try:
@@ -65,8 +70,9 @@ def chat():
         if not user_msg:
             return jsonify({"error": "No message"}), 400
 
-        # Load history and append new message
+        # Load history and prepare messages for Groq
         history = load_history(user_id)
+
         # Groq uses 'assistant' instead of 'model' for roles
         messages = [
             {"role": m["role"].replace("model", "assistant"), "content": m["content"]}
@@ -74,16 +80,17 @@ def chat():
         ]
         messages.append({"role": "user", "content": user_msg})
 
-        # Call Groq API instead of local model
+        # --- UPDATED MODEL NAME ---
+        # gemma2-9b-it was decommissioned. Using Llama 3.3 70B for high quality.
         completion = client.chat.completions.create(
-            model="gemma2-9b-it",
+            model="llama-3.3-70b-versatile",
             messages=messages,
             temperature=0.7,
         )
 
         bot_response = completion.choices[0].message.content
 
-        # Save updated history
+        # Save updated history (keeping your original keys)
         history.append({"role": "user", "content": user_msg})
         history.append({"role": "assistant", "content": bot_response})
         save_history(user_id, history)
@@ -95,6 +102,20 @@ def chat():
         return jsonify({"error": str(e)}), 500
 
 
+# 4. Reset Endpoint
+@app.route("/reset", methods=["POST"])
+def reset():
+    try:
+        data = request.json
+        user_id = data.get("user_id", "default_user")
+        with sqlite3.connect(DB_NAME) as conn:
+            conn.execute("DELETE FROM conversations WHERE user_id = ?", (user_id,))
+        return jsonify({"message": "History cleared"})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == "__main__":
     init_db()
+    # Port 5000 is required for Render as per your logs
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))

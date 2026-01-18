@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ChatSidebar from "./ChatSidebar";
 import Body from "./Body";
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 // Helper function to get or create a unique user ID
 const getOrCreateUserId = () => {
   const USER_ID_KEY = "chatbot_user_id";
