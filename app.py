@@ -11,7 +11,7 @@ from groq import Groq  # Much lighter than transformers/torch
 # 1. Setup & Environment
 load_dotenv()
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 logging.basicConfig(level=logging.DEBUG)
 
 # Initialize Groq (Set GROQ_API_KEY in your Render environment)

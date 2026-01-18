@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ChatSidebar from "./ChatSidebar";
 import Body from "./Body";
-
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 // Helper function to get or create a unique user ID
 const getOrCreateUserId = () => {
   const USER_ID_KEY = "chatbot_user_id";
@@ -73,7 +73,7 @@ const App = () => {
     setIsLoading(true);
 
     try {
-      const res = await axios.post("http://localhost:5000/chat", {
+      const res = await axios.post(`${API_BASE_URL}/chat`, {
         message: prompt,
         user_id: userId,
       });
@@ -96,7 +96,8 @@ const App = () => {
     // Stop any speaking audio on new chat
     window.speechSynthesis.cancel();
     try {
-      await axios.post("http://localhost:5000/reset", { user_id: userId });
+      // UPDATED LINE BELOW
+      await axios.post(`${API_BASE_URL}/reset`, { user_id: userId });
       setChatMessages([
         { sender: "bot", text: "I am ready. Ask me anything." },
       ]);
