@@ -23,7 +23,7 @@ const SpeechRecognition =
 let recognition;
 if (SpeechRecognition) {
   recognition = new SpeechRecognition();
-  recognition.continous = false;
+  recognition.continuous = false;
   recognition.lang = "en-US";
   recognition.interimResults = false;
 } else {
