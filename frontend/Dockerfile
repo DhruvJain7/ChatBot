@@ -1,27 +1,17 @@
-# --- Stage 1: Build the React app ---
-FROM node:18 AS builder
+FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy dependency manifests
-COPY package.json package-lock.json ./
+# Install basic dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the frontend code
+# Copy your code
 COPY . .
 
-# Build the static assets
-RUN npm run build
+# Environment variable for Groq (set this in Render dashboard, not here for security)
+# ENV GROQ_API_KEY=your_key_here
 
-# --- Stage 2: Serve the static assets with Nginx ---
-FROM nginx:alpine
+EXPOSE 5000
 
-# Copy the built files from the 'builder' stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-# Nginx listens on port 80 by default
-EXPOSE 80
-
-# Default command starts Nginx, no CMD needed
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
