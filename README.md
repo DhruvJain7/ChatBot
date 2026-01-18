@@ -1,101 +1,67 @@
-# Personal AI Chatbot with React, Flask, and Gemma 2B
+# Full-Stack AI Voice Chatbot 🎙️🤖
 
-This is a personal AI chatbot application built with a React frontend and a Flask backend. It uses Google's powerful **Gemma 2B** instruction-tuned model to provide intelligent responses and maintains a persistent conversation history using SQLite.
+A personal, voice-enabled AI assistant featuring a **React (Vite)** frontend and a **Flask (Dockerized)** backend. This application leverages the high-speed **Gemma 2 9B** model via the **Groq LPU™ Inference Engine**, preserves conversation context with an **SQLite** database, and features a hands-free **Voice Mode**.
 
-***
 
-## Description
 
-This project implements a client-server architecture to create an advanced chatbot.
-- The **React frontend** provides a user-friendly chat interface.
-- The **Flask backend** now uses **Google's `gemma-2b-it`**, a powerful instruction-following model, to generate intelligent and accurate responses.
-- **Persistent Memory:** The backend uses **SQLite** to save all conversation history. This means the chatbot remembers your conversation even after the server is restarted.
-- **Reset Functionality:** A `/reset` endpoint is available to clear the chat history for a specific user, allowing them to start a new conversation.
-- **Voice Interactivity:** Uses Speech API to have a Voice mode functionality.The bot speaks every messages from the model when in Voice mode.
+---
 
-This is a significant upgrade from the original project, moving from a simple conversational model (DialoGPT) to a truly capable AI assistant.
+## 📖 Table of Contents
+1. [Core Features](#-core-features)
+2. [Tech Stack](#-tech-stack)
+3. [Architecture Overview](#-architecture-overview)
+4. [Local Setup](#-local-setup)
+5. [Environment Variables](#-environment-variables)
+6. [Deployment](#-deployment)
+7. [Voice & HTTPS](#-voice--https)
+8. [License](#-license)
 
-***
+---
 
-## Technologies Used
+## ✨ Core Features
+* **Intelligent AI**: Powered by Google's **Gemma 2 9B IT**, a state-of-the-art instruction-tuned model known for its accuracy and conversational capabilities.
+* **Persistent Memory**: Integrated **SQLite** backend stores chat history, allowing the bot to remember past interactions even after a page refresh or server restart.
+* **Voice Interactivity**: Full support for the **Web Speech API**.
+    * **Dictation**: Speak your prompts directly to the AI.
+    * **Audio Response**: The bot reads its answers back to you automatically when Voice Mode is enabled.
+* **Production Ready**: Dockerized backend for easy scaling on Render and a Vercel-optimized frontend.
+* **Secure & Fast**: Optimized for **HTTPS** to ensure microphone permissions work flawlessly, with lightning-fast inference speeds provided by Groq.
 
-* **Frontend**:
-    * React
-    * Vite
-    * axios
-* **Backend**:
-    * Flask
-    * Flask-CORS
-    * `sqlite3` (for persistent database)
-    * `pickle` (for data serialization)
-* **AI Model**:
-    * `transformers` (from Hugging Face)
-    * `torch`
-    * **`google/gemma-2b-it`** (replaces DialoGPT)
+---
 
-***
+## 🛠️ Tech Stack
 
-## Getting Started
+| Layer | Technology |
+| :--- | :--- |
+| **Frontend** | React (Vite), Axios, Tailwind CSS |
+| **Backend** | Flask, Gunicorn, Python 3.11 |
+| **AI Inference** | Groq Cloud API (**Gemma 2 9B IT**) |
+| **Database** | SQLite + Pickle (Serialization) |
+| **Infrastructure** | Docker, Vercel (Frontend), Render (Backend) |
 
-To get a local copy up and running, follow these simple steps.
+---
 
-### Prerequisites
+## 🏗️ Architecture Overview
+The app uses a decoupled architecture for maximum maintainability:
+1.  **React Client**: Handles the UI, state management, and speech synthesis/recognition.
+2.  **Flask API**: Orchestrates the logic, manages unique User IDs via local storage, and handles database I/O.
+3.  **Groq Engine**: Processes the LLM prompts on dedicated hardware, bypassing local hardware limitations.
 
-* Python 3.x
-* Node.js and npm
+---
 
-### Backend Setup
+## 🚀 Local Setup
 
-1.  Clone the repo (replace `your_username/your_project_name` with your actual repo details):
-    ```sh
-    git clone [https://github.com/your_username/your_project_name.git](https://github.com/your_username/your_project_name.git)
-    cd your_project_name/backend
-    ```
-2.  Create and activate a virtual environment:
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
-3.  Install the required packages:
-    ```sh
-    pip install Flask Flask-Cors transformers torch
-    ```
-    *(Note: `sqlite3` and `pickle` are included with Python, so no extra install is needed.)*
+### 1. Backend Setup
+```bash
+# Clone the repository
+git clone [https://github.com/DhruvJain7/ChatBot.git](https://github.com/DhruvJain7/ChatBot.git)
+cd ChatBot
 
-4.  Start the Flask server:
-    ```sh
-    python app.py
-    ```
-    A `chat_history.db` file will be automatically created in this directory.
+# Install dependencies
+pip install -r requirements.txt
 
-### Frontend Setup
+# Create a local .env file
+echo "GROQ_API_KEY=your_groq_key_here" > .env
 
-1.  Navigate to the frontend directory from the project's root:
-    ```sh
-    cd ../frontend
-    ```
-2.  Install NPM packages:
-    ```sh
-    npm install
-    ```
-3.  Start the development server:
-    ```sh
-    npm run dev
-    ```
-
-***
-
-## Core Features
-
-* **Intelligent Responses**: Powered by Google's Gemma 2B, the bot can answer questions, write code, and follow instructions.
-* **Persistent Conversation History**: Your chat is saved in a local SQLite database, so the bot always remembers your context.
-* **Real-time Interaction**: Get responses from the AI in real-time.
-* **Chat Reset**: A built-in `/reset` endpoint allows users to clear their conversation history and start fresh.
-* **Separation of Concerns**: A decoupled frontend and backend for maintainability.
-
-***
-
-## Acknowledgements
-
-* This project was originally based on the [Dev.to article](https://dev.to/allanninal/building-a-personal-ai-chatbot-with-react-and-flask-a-comprehensive-guide-4n2j) by Allan Ninal.
-* It has been significantly upgraded with a modern LLM (Google's Gemma) and a persistent SQLite database.
+# Run the server
+python app.py
