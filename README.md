@@ -37,17 +37,32 @@ The app uses a decoupled architecture for maximum maintainability:
 🚀 Local Setup
 --------------
 
-### 1\. Backend Setup
+## 🚀 Local Setup
 
-Bash
+### 1. Backend Setup
+```bash
+# Clone the repository
+git clone [https://github.com/DhruvJain7/ChatBot.git](https://github.com/DhruvJain7/ChatBot.git)
+cd ChatBot
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   # Clone the repository  git clone https://github.com/DhruvJain7/ChatBot.git  cd ChatBot  # Install dependencies  pip install -r requirements.txt  # Create a local .env file  echo "GROQ_API_KEY=your_groq_key_here" > .env  # Run the server  python app.py   `
+# Install dependencies
+pip install -r requirements.txt
 
-### 2\. Frontend Setup
+# Run the server
+python app.py
+```
 
-Bash
+### 2\. Frontend Setup 
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   cd frontend  npm install  # Create a local .env file  echo "VITE_API_URL=http://localhost:5000" > .env  # Run the development server  npm run dev   `
+
+
+```bash
+cd frontend  npm install  
+# Create a local .env file
+  echo "VITE_API_URL=http://localhost:5000" > .env
+# Run the development server
+npm run dev   `
+```
 
 🔑 Environment Variables
 ------------------------
