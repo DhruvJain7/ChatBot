@@ -114,10 +114,7 @@ The **Web Speech API** used for the microphone and voice synthesis requires a **
 *   Always ensure you access the app via the https:// protocol to enable microphone permissions in your browser.
     
 
-⚖️ License
-----------
 
-Distributed under the MIT License. See LICENSE for more information.
 
 🙏 Acknowledgements
 -------------------
