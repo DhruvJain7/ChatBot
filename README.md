@@ -116,9 +116,19 @@ The **Web Speech API** used for the microphone and voice synthesis requires a **
 
 
 
-🙏 Acknowledgements
--------------------
+🙏 Acknowledgments & Credits
+----------------------------
 
-*   Based on the architectural foundation by Allan Ninal.
+This project was built and evolved starting from the foundational guide by **Allan Ninal**.
+
+*   **Original Article**: [Building a Personal AI Chatbot with React and Flask: A Comprehensive Guide](https://dev.to/allanninal/building-a-personal-ai-chatbot-with-react-and-flask-a-comprehensive-guide-4n2j)
     
-*   Enhanced with **Groq LPU** technology and **Gemma 2 9B** for state-of-the-art AI speed.
+*   **Evolutions**: While the original guide utilized DialoGPT, this version has been upgraded with:
+    
+    *   **Groq API** for sub-second LPU inference.
+        
+    *   **Gemma 2 9B** instruction-tuned model.
+        
+    *   **SQLite Persistence** for multi-user chat history.
+        
+    *   **Dockerization** for cloud-ready deployment.
