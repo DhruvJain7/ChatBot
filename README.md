@@ -1,67 +1,112 @@
-# Full-Stack AI Voice Chatbot 🎙️🤖
+Full-Stack AI Voice Chatbot 🎙️🤖
+=================================
 
-A personal, voice-enabled AI assistant featuring a **React (Vite)** frontend and a **Flask (Dockerized)** backend. This application leverages the high-speed **Gemma 2 9B** model via the **Groq LPU™ Inference Engine**, preserves conversation context with an **SQLite** database, and features a hands-free **Voice Mode**.
+This project is a high-performance, voice-enabled AI assistant featuring a **React (Vite)** frontend and a **Flask (Dockerized)** backend. It leverages the state-of-the-art **Gemma 2 9B IT** model via the **Groq LPU™ Inference Engine** for sub-second responses, preserves conversation memory using **SQLite**, and includes an interactive **Voice Mode**.
 
+✨ Core Features
+---------------
 
+*   **Intelligent AI**: Powered by Google's **Gemma 2 9B IT**, known for its high accuracy and conversational ability.
+    
+*   **Persistent Memory**: Integrated **SQLite** backend stores serialized chat history, allowing context to persist across sessions and server restarts.
+    
+*   **Voice Mode**: Full support for the Web Speech API, enabling real-time **Speech-to-Text** (dictation) and **Text-to-Speech** (audio responses).
+    
+*   **Production Ready**: Dockerized backend for easy scaling on Render and a Vercel-optimized frontend.
+    
+*   **Secure & Fast**: Optimized for **HTTPS** to ensure microphone permissions work flawlessly, with lightning-fast inference provided by Groq.
+    
 
----
+🛠️ Tech Stack
+--------------
 
-## 📖 Table of Contents
-1. [Core Features](#-core-features)
-2. [Tech Stack](#-tech-stack)
-3. [Architecture Overview](#-architecture-overview)
-4. [Local Setup](#-local-setup)
-5. [Environment Variables](#-environment-variables)
-6. [Deployment](#-deployment)
-7. [Voice & HTTPS](#-voice--https)
-8. [License](#-license)
+**LayerTechnologyFrontend**React (Vite), Axios, Tailwind CSS**Backend**Flask, Gunicorn, Python 3.11**AI Inference**Groq Cloud API (**Gemma 2 9B IT**)**Database**SQLite + Pickle (Serialization)**Infrastructure**Docker, Vercel (Frontend), Render (Backend)
 
----
+🏗️ Architecture Overview
+-------------------------
 
-## ✨ Core Features
-* **Intelligent AI**: Powered by Google's **Gemma 2 9B IT**, a state-of-the-art instruction-tuned model known for its accuracy and conversational capabilities.
-* **Persistent Memory**: Integrated **SQLite** backend stores chat history, allowing the bot to remember past interactions even after a page refresh or server restart.
-* **Voice Interactivity**: Full support for the **Web Speech API**.
-    * **Dictation**: Speak your prompts directly to the AI.
-    * **Audio Response**: The bot reads its answers back to you automatically when Voice Mode is enabled.
-* **Production Ready**: Dockerized backend for easy scaling on Render and a Vercel-optimized frontend.
-* **Secure & Fast**: Optimized for **HTTPS** to ensure microphone permissions work flawlessly, with lightning-fast inference speeds provided by Groq.
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-| :--- | :--- |
-| **Frontend** | React (Vite), Axios, Tailwind CSS |
-| **Backend** | Flask, Gunicorn, Python 3.11 |
-| **AI Inference** | Groq Cloud API (**Gemma 2 9B IT**) |
-| **Database** | SQLite + Pickle (Serialization) |
-| **Infrastructure** | Docker, Vercel (Frontend), Render (Backend) |
-
----
-
-## 🏗️ Architecture Overview
 The app uses a decoupled architecture for maximum maintainability:
+
 1.  **React Client**: Handles the UI, state management, and speech synthesis/recognition.
+    
 2.  **Flask API**: Orchestrates the logic, manages unique User IDs via local storage, and handles database I/O.
+    
 3.  **Groq Engine**: Processes the LLM prompts on dedicated hardware, bypassing local hardware limitations.
+    
 
----
+🚀 Local Setup
+--------------
 
-## 🚀 Local Setup
+### 1\. Backend Setup
 
-### 1. Backend Setup
-```bash
-# Clone the repository
-git clone [https://github.com/DhruvJain7/ChatBot.git](https://github.com/DhruvJain7/ChatBot.git)
-cd ChatBot
+Bash
 
-# Install dependencies
-pip install -r requirements.txt
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   # Clone the repository  git clone https://github.com/DhruvJain7/ChatBot.git  cd ChatBot  # Install dependencies  pip install -r requirements.txt  # Create a local .env file  echo "GROQ_API_KEY=your_groq_key_here" > .env  # Run the server  python app.py   `
 
-# Create a local .env file
-echo "GROQ_API_KEY=your_groq_key_here" > .env
+### 2\. Frontend Setup
 
-# Run the server
-python app.py
+Bash
+
+Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   cd frontend  npm install  # Create a local .env file  echo "VITE_API_URL=http://localhost:5000" > .env  # Run the development server  npm run dev   `
+
+🔑 Environment Variables
+------------------------
+
+### Local Development
+
+*   **Backend Root**: .env file containing GROQ\_API\_KEY.
+    
+*   **Frontend Folder**: .env file containing VITE\_API\_URL.
+    
+
+### Production Deployment
+
+*   **Render (Backend)**: Add GROQ\_API\_KEY and PORT=5000 to the Environment settings.
+    
+*   **Vercel (Frontend)**: Add VITE\_API\_URL set to your live Render URL (e.g., https://your-app.onrender.com).
+    
+
+🌐 Deployment Configuration
+---------------------------
+
+### Render (Backend)
+
+*   **Root Directory**: Leave blank (Root of repo).
+    
+*   **Language**: Docker.
+    
+*   **Dockerfile Path**: ./Dockerfile.
+    
+
+### Vercel (Frontend)
+
+*   **Root Directory**: frontend.
+    
+*   **Framework Preset**: Vite.
+    
+*   **Build Command**: npm run build.
+    
+*   **Output Directory**: dist.
+    
+
+🎤 Voice & HTTPS
+----------------
+
+The **Web Speech API** used for the microphone and voice synthesis requires a **Secure Context**.
+
+*   In production, Vercel and Render provide **HTTPS** by default.
+    
+*   Always ensure you access the app via the https:// protocol to enable microphone permissions in your browser.
+    
+
+⚖️ License
+----------
+
+Distributed under the MIT License. See LICENSE for more information.
+
+🙏 Acknowledgements
+-------------------
+
+*   Based on the architectural foundation by Allan Ninal.
+    
+*   Enhanced with **Groq LPU** technology and **Gemma 2 9B** for state-of-the-art AI speed.
