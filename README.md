@@ -58,9 +58,8 @@ The app uses a decoupled architecture for maximum maintainability:
 🚀 Local Setup
 --------------
 
-## 🚀 Local Setup
-
 ### 1. Backend Setup
+
 ```bash
 # Clone the repository
 git clone [https://github.com/DhruvJain7/ChatBot.git](https://github.com/DhruvJain7/ChatBot.git)
@@ -74,8 +73,6 @@ python app.py
 ```
 
 ### 2\. Frontend Setup 
-
-
 
 ```bash
 cd frontend  npm install  
