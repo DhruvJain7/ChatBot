@@ -20,7 +20,28 @@ This project is a high-performance, voice-enabled AI assistant featuring a **Rea
 🛠️ Tech Stack
 --------------
 
-**LayerTechnologyFrontend**React (Vite), Axios, Tailwind CSS**Backend**Flask, Gunicorn, Python 3.11**AI Inference**Groq Cloud API (**Gemma 2 9B IT**)**Database**SQLite + Pickle (Serialization)**Infrastructure**Docker, Vercel (Frontend), Render (Backend)
+**LayerTechnologyFrontend**
+
+- React (Vite)
+-  Axios
+- TailwindCSS
+  
+**Backend**
+- Flask
+- Gunicorn
+- Python 3.11
+  
+**AI Inference**
+- Groq Cloud API
+- (**Gemma 2 9B IT**)
+  
+**Database**
+- SQLite + Pickle (Serialization)
+  
+**Infrastructure**
+- Docker
+- Vercel (Frontend)
+- Render (Backend)
 
 🏗️ Architecture Overview
 -------------------------
