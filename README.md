@@ -1,7 +1,7 @@
 Full-Stack AI Voice Chatbot 🎙️🤖
 =================================
 
-This project is a high-performance, voice-enabled AI assistant featuring a **React (Vite)** frontend and a **Flask (Dockerized)** backend. It leverages the state-of-the-art **Gemma 2 9B IT** model via the **Groq LPU™ Inference Engine** for sub-second responses, preserves conversation memory using **SQLite**, and includes an interactive **Voice Mode**.
+This project is a high-performance, voice-enabled AI assistant featuring a **React (Vite)** frontend and a **Flask (Dockerized)** backend. It leverages the state-of-the-art **llama-3.3-70b-versatile** model via the **Groq LPU™ Inference Engine** for sub-second responses, preserves conversation memory using **SQLite**, and includes an interactive **Voice Mode**.
 
 ✨ Core Features
 ---------------
