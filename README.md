@@ -6,7 +6,7 @@ This project is a high-performance, voice-enabled AI assistant featuring a **Rea
 ✨ Core Features
 ---------------
 
-*   **Intelligent AI**: Powered by Google's **Gemma 2 9B IT**, known for its high accuracy and conversational ability.
+*   **Intelligent AI**: Powered by Google's **llama-3.3-70b-versatile**, known for its high accuracy and conversational ability.
     
 *   **Persistent Memory**: Integrated **SQLite** backend stores serialized chat history, allowing context to persist across sessions and server restarts.
     
@@ -33,7 +33,7 @@ This project is a high-performance, voice-enabled AI assistant featuring a **Rea
   
 **AI Inference**
 - Groq Cloud API
-- (**Gemma 2 9B IT**)
+- (**llama-3.3-70b-versatile**)
   
 **Database**
 - SQLite + Pickle (Serialization)
