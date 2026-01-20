@@ -145,7 +145,7 @@ This project was built and evolved starting from the foundational guide by **All
     
     *   **Groq API** for sub-second LPU inference.
         
-    *   **Gemma 2 9B** instruction-tuned model.
+    *   **llama-3.3-70b-versatile** instruction-tuned model.
         
     *   **SQLite Persistence** for multi-user chat history.
         
