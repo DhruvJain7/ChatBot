@@ -83,7 +83,7 @@ def chat():
         # --- UPDATED MODEL NAME ---
         # gemma2-9b-it was decommissioned. Using Llama 3.3 70B for high quality.
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=messages,
             temperature=0.7,
         )
